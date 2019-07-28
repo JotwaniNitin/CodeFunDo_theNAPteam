@@ -54,7 +54,6 @@ Each candidate will be stored with multiple attributes about itself. The system 
 This Candidate struct is initialized with the candidate id, name and the initial vote count to 0. Note that this function's visibility is private because only the concerned authority will want to call it inside the contract.
 
 >> contract Election {
->>   // Model a Candidate
 >>    struct Candidate {
 >>      uint id;
 >>        string name;
