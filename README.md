@@ -3,7 +3,7 @@
 
 ### Introduction 
 
-India being the largest democracy in the world caters to a huge population, conducts innumerous elections and has polling booths across 29 states and union territories at multiple tiers. Referenda and polls are very important processes & tools for the smooth operation of a modern democracy.
+India being the largest democracy in the world caters to a huge population, conducts innumerous elections and has polling booths across 29 states and union territories at multiple tiers. 
 
 Some of the key problems in such a widely conducted activity are rigging of polling booths, bribery and use of money power to buy votes and low voter turnouts. This significantly affects the candidates fighting in the elections and might not result in a fair electoral process.   
 
@@ -75,10 +75,9 @@ Next, there is a function to add candidates to this mapping.
 
 Now there are a few points regarding the ability to cast votes in the election. The core functionality of this function is to increase the candidate's vote count by reading the Candidate struct out of the "candidates" mapping and increasing the "voteCount" by 1 with the increment operator (++). 
 
-Its visibility is public because we want an external account to call it.
-It adds the account that voted for the voters mapping that we just created. This will allow us to keep track that the voter has voted in the election. We access the account that's calling this function with the global variable "msg.sender" provided by Solidity.
+Its visibility is public because we want an external account to call it. This will allow us to keep track that the voter has voted in the election. We access the account that's calling this function with the global variable "msg.sender" provided by Solidity.
 
-It implements require statements that will stop execution if the conditions are not met. First require that the voter hasn't voted before. We do this by reading the account address with "msg.sender" from the mapping. If it's there, the account has already voted. Next, it requires that the candidate id is valid.
+It implements require statements that will stop execution if the conditions are not met. First requirement that the voter hasn't voted before. We do this by reading the account address with "msg.sender" from the mapping. If it's there, the account has already voted. Next, it requires that the candidate id is valid.
 
 3. We finally build an application on top of this ledger network that would write messages to and read messages off this ledger and route it to applications and databases with the Workbench Tool.
  
