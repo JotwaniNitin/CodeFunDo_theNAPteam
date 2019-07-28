@@ -13,13 +13,13 @@ Our solution demonstrates how you can make these processes more secure, reliable
 
 We plan to build a system comprising of: 
 
-<bold>1. Automatic generation of voter card on turning 18</bold>
+    1.  Automatic generation of voter card on turning 18
 
 Now that AADHAR Card is mandatory for every citizen of the country this can be used as an effective database for the eligible voters in a constituency. The Ministry of Electronics and Information Technology (MeitY) which allocates AADHAR will automatically register all the new AADHAR Card holders to our system. A password will be provided to the respective users to log into the app, which is to be changed by the users after receiving it, to secure their accounts. The system henceforth will check for the age of the user by reading the AADHAR and provide automatic voting access on turning 18. Everyone who is 18+ on the system will be assigned an e-Voter Card in real time. 
 
 This will help increase the turnout in elections as a lot of citizens do not make their voter cards given the long rigmarole of an offline application for the same. 
 
-<bold>2. Remote Voting Access</bold>
+    2. Remote Voting Access
 
 Our model now has an online database of all the eligible voters in the country. The system is an e-voting platform which is app and web based wherein a voter can sign in during elections to cast his or her vote. Unlike the current practice, wherein a person can only vote in the constituency where his/her address (as mentioned in the voter card) falls, our model allows a person to vote from anywhere in the country and even overseas. 
 
@@ -29,13 +29,13 @@ For a similar experience in rural areas with no or poor internet access, or unav
 
 For security reasons, the system will verify the user on many folds like password, OTP and facial recognition (by matching it to the AADHAR). During the voting process, the webcam of the user should be switched on at all times to videograph the entire process. There will also be MAC filtering for each device in the backend wherein devices used to cast multiple votes will be notified to the ECI (Election Commission of India) to check for and avoid illegitimate votes. 
 
-<bold>3. Expedite Vote Counting</bold> 
+    3. Expedite Vote Counting
 
 Using the blockchain technology, the system automatically calculates the number of votes for each candidate (which is a node in our blockchain network). This is later fed to a software application with other details like the constituency id and party id to generate elections results quickly. 
 
 This saves huge amounts of time and the need to transport EVMs from one place to another. This also rules down cases of EVM hacking and other malpractices while vote counting. 
 
-<bold>4. Financial Transparency</bold>
+    4. Financial Transparency
 
 It often happens that major political parties have an obvious advantage where they can use an excess of money power to ‘buy’ votes with bribery. Even while campaigning, smaller parties have a disadvantage since they don’t have as much money or power as the bigger parties. The EIC sanctions a certain budget which a party needs to stick to, but there have been innumerous cases of exceeding it using black money. 
 
@@ -54,24 +54,24 @@ Each candidate will be stored with multiple attributes about itself. The system 
 This Candidate struct is initialized with the candidate id, name and the initial vote count to 0. Note that this function's visibility is private because only the concerned authority will want to call it inside the contract.
 
 >> contract Election {
-    // Model a Candidate
-    struct Candidate {
-        uint id;
-        string name;
-        uint voteCount;
-    }
+>>   // Model a Candidate
+>>    struct Candidate {
+>>      uint id;
+>>        string name;
+>>        uint voteCount;
+>>    }
 
 The next thing to do is store the candidates, which is one of the structure types we have just created. We can do this with a Solidity mapping. (A mapping in Solidity is like an associative array or a hash, that associates key-value pairs).
 
-mapping(uint => Candidate) public candidates;
-uint public candidatesCount
+>>  mapping(uint => Candidate) public candidates;
+>>  uint public candidatesCount
 
 Next, there is a function to add candidates to this mapping. 
 
-function addCandidate (string _name) private {
-        candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
-    }
+>>  function addCandidate (string _name) private {
+>>        candidatesCount ++;
+>>        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+>>  }
 
 
 Now there are a few points regarding the ability to cast votes in the election. The core functionality of this function is to increase the candidate's vote count by reading the Candidate struct out of the "candidates" mapping and increasing the "voteCount" by 1 with the increment operator (++). 
